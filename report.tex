@@ -1,0 +1,65 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{CAFA 6 Protein Function Prediction Report}
+
+\author{\IEEEauthorblockN{Trung Hau Tran, Trung Hieu Pham, Nam Khanh Pham}
+\IEEEauthorblockA{\textit{VNU University of Engineering and Technology}\\
+Hanoi, Vietnam}}
+
+
+\maketitle
+
+\begin{abstract}
+Bài báo cáo này trình bày phương pháp của chúng tôi cho CAFA 6 Protein Function Prediction.
+Cuộc thi này tập trung vào việc xây dựng mô hình học máy có khả năng dự đoán được chức năng
+sinh học của protein chỉ dựa trên trình tự axit amin của các protein đó. Dữ liệu gồm các chuỗi protein 
+và trình tự axit amin tương ứng, cùng với các nhãn chức năng sinh học được gán với Gene Ontology (GO).
+
+Chúng tôi áp dụng phương pháp học máy và học sâu, kết hợp các kỹ thuật trích xuất đặc trưng 
+, lựa chọn mô hình embedding phù hợp và kĩ thuật ensemble mô hình để xây dựng mô hình dự đoán chức năng protein.
+
+Điểm cuối cùng đạt được là 0.358, top 56/460 đội (tính đến ngày 9/8/2025).
+\end{abstract}
+
+% \begin{IEEEkeywords}
+% Ariel Data Challenge 2025, Signal Processing, Polynomial Interpolation, Machine Learning,
+% Spectral Recovery, Time Series Analysis, Calibration Correction
+% \end{IEEEkeywords}
+
+\input{section/introduction.tex}
+
+\input{section/background.tex}
+
+\input{section/method.tex}
+
+\input{section/experiments.tex}
+
+\input{section/conclusion.tex}
+
+\input{section/cite.tex}
+
+% \clearpage
+
+\input{section/appendix.tex}
+
+\input{section/cite.tex}
+
+
+\end{document}
+
+

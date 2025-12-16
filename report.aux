@@ -9,38 +9,45 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.}Tập dữ liệu}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Phương pháp}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.}Tiền xử lý dữ liệu}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.}Phương pháp 1: Trích xuất đặc trưng thủ công}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.}Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.}Tiền xử lý dữ liệu chuỗi (Sequence)}{1}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.a}Phương pháp 1: Trích xuất đặc trưng thủ công}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.b}Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.}Tiền xử lý dữ liệu nhãn (Label)}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {2.a}Bước 1: Lọc nhãn phổ biến (Top-K Filtering)}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {2.b}Bước 2: Mã hóa One-hot (One-hot Encoding)}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.}Tiếp cận theo hướng không dùng học máy}{2}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Trung bình tín hiệu trên từng bước thời gian}}{2}{}\protected@file@percent }
-\newlabel{fig:average_signal}{{1}{2}{}{figure.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Insight về hiện tượng transit}}{2}{}\protected@file@percent }
-\newlabel{fig:transit}{{2}{2}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.}Naive Prior Baseline: Frequency-based GO Term Prediction}{2}{}\protected@file@percent }
+\newlabel{sec:baseline_naive}{{1.}{2}{}{subsubsection.3.2.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.a}Ước lượng phân phối nhãn theo từng phân hệ (aspect).}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.b}Chọn top-$k$ GO term phổ biến nhất.}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.c}Inference}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {1.d}Vai trò và hạn chế.}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.}BLAST - }{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {C.}Tiếp cận theo hướng sử dụng học máy}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Thực nghiệm}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.}Tối ưu các hệ số mô hình non-ML}{3}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Hình dạng phổ biến của flux theo thời gian trong tập dữ liệu}}{3}{}\protected@file@percent }
-\newlabel{fig:poly_degree}{{3}{3}{}{figure.3}{}}
-\newlabel{tab:poly_degree_score}{{A.}{3}{}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mối quan hệ giữa s, mục tiêu cần dự đoán}}{3}{}\protected@file@percent }
-\newlabel{fig:explain_scale}{{4}{3}{}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.}Kết quả}{4}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Kết quả của mô hình Regressor so với non ML}}{4}{}\protected@file@percent }
-\newlabel{fig:regressor}{{5}{4}{}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Các bước sóng chưa qua làm mịn}}{4}{}\protected@file@percent }
-\newlabel{fig:raw_dips}{{6}{4}{}{figure.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Các bước sóng đã qua làm mịn}}{4}{}\protected@file@percent }
-\newlabel{fig:smoothed_dips}{{7}{4}{}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Các bước sóng dự đoán của mô hình non-ML}}{4}{}\protected@file@percent }
-\newlabel{fig:non_ml_dip}{{8}{4}{}{figure.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Các bước sóng đã qua làm mượt bằng PCA}}{5}{}\protected@file@percent }
-\newlabel{fig:pca_smoothed_dips}{{9}{5}{}{figure.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Dự đoán của mô hình ML bám sát được hình dạng của ground truth}}{5}{}\protected@file@percent }
-\newlabel{fig:ml_catch}{{10}{5}{}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Dự đoán của mô hình non-ML không bám sát được hình dạng của ground truth}}{5}{}\protected@file@percent }
-\newlabel{fig:non_ml_catch}{{11}{5}{}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Hình dạng phổ biến của flux theo thời gian trong tập dữ liệu}}{3}{}\protected@file@percent }
+\newlabel{fig:poly_degree}{{1}{3}{}{figure.1}{}}
+\newlabel{tab:poly_degree_score}{{A.}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.}Kết quả}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Mối quan hệ giữa s, mục tiêu cần dự đoán}}{3}{}\protected@file@percent }
+\newlabel{fig:explain_scale}{{2}{3}{}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Kết quả của mô hình Regressor so với non ML}}{4}{}\protected@file@percent }
+\newlabel{fig:regressor}{{3}{4}{}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Các bước sóng chưa qua làm mịn}}{4}{}\protected@file@percent }
+\newlabel{fig:raw_dips}{{4}{4}{}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Các bước sóng đã qua làm mịn}}{4}{}\protected@file@percent }
+\newlabel{fig:smoothed_dips}{{5}{4}{}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Các bước sóng dự đoán của mô hình non-ML}}{4}{}\protected@file@percent }
+\newlabel{fig:non_ml_dip}{{6}{4}{}{figure.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Các bước sóng đã qua làm mượt bằng PCA}}{5}{}\protected@file@percent }
+\newlabel{fig:pca_smoothed_dips}{{7}{5}{}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Dự đoán của mô hình ML bám sát được hình dạng của ground truth}}{5}{}\protected@file@percent }
+\newlabel{fig:ml_catch}{{8}{5}{}{figure.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Kết luận}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{Ph\d {u} l\d {u}c}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Tỉ lệ đóng góp}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Dự đoán của mô hình non-ML không bám sát được hình dạng của ground truth}}{5}{}\protected@file@percent }
+\newlabel{fig:non_ml_catch}{{9}{5}{}{figure.9}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Tỉ lệ đóng góp của các thành viên trong nhóm}}{5}{}\protected@file@percent }
 \gdef \@abspage@last{5}

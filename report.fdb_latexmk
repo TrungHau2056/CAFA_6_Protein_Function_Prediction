@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765826616.49212 "d:/Ky5/ML/CAFA_6_Protein_Function_Prediction/report.tex" "report.pdf" "report" 1765826618.77194 0
+["pdflatex"] 1765856175.66623 "d:/Ky5/ML/CAFA_6_Protein_Function_Prediction/report.tex" "report.pdf" "report" 1765856177.66944 0
   "C:/Users/hautt/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765764033 89969 e95579120a3aa0ebc21d2737ca2ba701 ""
   "C:/Users/hautt/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1763135700 13333512 6ab9457cd721d20739a8c3e2f5f33fe7 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -129,7 +129,6 @@
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "IEEEtran.cls" 1765762478 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
   "d:/Ky5/ML/CAFA_6_Protein_Function_Prediction/report.tex" 1765825056 2495 39608fc890a839cb42d1be7c5a1b66fc ""
-  "figures/average_signal.png" 1765762478 66158 bc13bda7ed8affa2f336b0fbd6f03861 ""
   "figures/explain_SCALE.png" 1765762478 245359 6315a2a4131687cd5dc511871ff0dd6d ""
   "figures/gp_ae_dip.png" 1765762478 152686 e4ea30a1c969ddda8aff5bc4a3210cfc ""
   "figures/ml_catch.png" 1765762478 123850 f994d2729af805f05f72f79cff6820d7 ""
@@ -139,8 +138,7 @@
   "figures/poly_degree.png" 1765762478 1046551 56b3d24443fad972a15f5197e3e8328b ""
   "figures/raw_dips.png" 1765762478 303502 f189b5deef9a6eaefa523d6c2a5cf2b3 ""
   "figures/regressor.png" 1765762478 556819 9c3438d2aecb7895e7ce92511765da58 ""
-  "figures/transit.png" 1765762478 48143 35072be226a36eb08be194718c4035c4 ""
-  "report.aux" 1765826618 4614 d4937876acbfd17bf4b116b0aa93de93 "pdflatex"
+  "report.aux" 1765856177 5597 dafe11071b189bc1c3e4fff88fba02b7 "pdflatex"
   "report.tex" 1765825056 2495 39608fc890a839cb42d1be7c5a1b66fc ""
   "section/appendix.tex" 1765762478 97 406241ad255f84a4c23538d999213050 ""
   "section/appendix/contributor.tex" 1765762478 445 a20bfdf85a36458a84a3162221c984c2 ""
@@ -155,9 +153,9 @@
   "section/experiments/result.tex" 1765762478 5525 16a1566991bff51feafb99305645537e ""
   "section/introduction.tex" 1765789448 2313 17ee504301571f3846898f3934b00bb5 ""
   "section/method.tex" 1765764118 139 13900fd12a7fa8dd955fc529462e129a ""
-  "section/method/data-preprocessing.tex" 1765826615 4454 b7eb60244d87e50579d0fecf91c5380a ""
+  "section/method/data-preprocessing.tex" 1765856172 6833 38804d19d1c52bd533fb3319a33aa640 ""
   "section/method/ml.tex" 1765762478 401 aea4dbc9d9f9ac1a66ba3a8dc60e0efb ""
-  "section/method/non-ml.tex" 1765762478 5206 74a8ed22e14fc6640e297e6b659ee3a1 ""
+  "section/method/non-ml.tex" 1765854793 2720 f60a636ad55ae242feacf8217abf524a ""
   (generated)
   "report.aux"
   "report.log"

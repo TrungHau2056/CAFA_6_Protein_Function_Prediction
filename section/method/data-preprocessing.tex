@@ -1,67 +1,94 @@
 \subsection{Tiền xử lý dữ liệu}
 
+\subsubsection{Tiền xử lý dữ liệu chuỗi (Sequence)}
+
 Dữ liệu thô ban đầu là các chuỗi trình tự protein (dạng văn bản) trong tệp FASTA. 
 Để đưa vào các mô hình học máy, chúng tôi đã thử nghiệm và triển khai hai phương 
 pháp tiếp cận tiền xử lý dữ liệu riêng biệt nhằm khai thác tối đa thông tin từ 
-trình tự:
+trình tự protein:
 
 \begin{itemize}
-  \item \textbf{Phương pháp 1: Trích xuất đặc trưng thủ công (Manual Feature Engineering)} 
-  - Dựa trên kiến thức sinh học thống kê.
-  \item \textbf{Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)} 
-  - Dựa trên mô hình ngôn ngữ lớn (ESM-2).
+  \item \textbf{Phương pháp 1: Trích xuất đặc trưng thủ công (Manual Feature Engineering)} --- Dựa trên kiến thức sinh học thống kê.
+  \item \textbf{Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)} --- Dựa trên mô hình ngôn ngữ lớn (ESM-2).
 \end{itemize}
 
-\subsubsection{Phương pháp 1: Trích xuất đặc trưng thủ công}\mbox{}
+\paragraph{Phương pháp 1: Trích xuất đặc trưng thủ công}
 
-Ở phương pháp này, chúng tôi coi chuỗi protein là một tập hợp các thành phần hóa học và sử dụng công thức 
-thống kê để biến đổi chuỗi thành vector số học. Phương pháp này tập trung vào đặc điểm thành phần (composition) thay vì thứ tự sắp xếp.
+Phương pháp này coi chuỗi protein là một tập hợp các thành phần hóa học và sử dụng công thức 
+thống kê để biến đổi chuỗi thành vector số học. Phương pháp tập trung vào đặc điểm thành phần (composition) thay vì thứ tự sắp xếp.
 
-\begin{enumerate}[label=\alph*.]
-\item Xử lí dữ liệu thô
-  \begin{itemize}
-    \item Đọc dữ liệu: sử dụng thư viện \texttt{Biopython} để phân tích cú pháp tệp FASTA.
-    \item Làm sạch ID: Tách phân tiêu đề (Header) của FASTA để lấy mã định danh chuẩn (EntrID).
-  \end{itemize}
-\item Kỹ thuật tạo đặc trưng (Feature Engineering)\\
-  Chúng tôi xây dựng vector đặc trưng $X_{manual}$ dựa trên các thuộc tính lý hóa của protein:
-  \begin{itemize}
-    \item \texttt{Thành phần Axit Amin (Amino Acid Composition-AAC)}: tính toán tần suất xuất hiện của 20 loại axit amin chuẩn 
-    (A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V) trong mỗi chuỗi. Với công thức:
-    \\  \begin{equation}
-        AAC_i = \frac{\text{Count}(AA_i)}{\text{Length}(\text{Sequence})}
-        \end{equation}
-    \item \texttt{Độ dài chuỗi (Sequence Length)}: Thêm đặc trưng về tổng số lượng axit amin. 
-    Độ dài chuỗi thường tương quan với độ phức tạp của chức năng protein.
-  \end{itemize}
+\textit{Xử lý dữ liệu thô:}
+\begin{itemize}
+  \item Đọc dữ liệu: sử dụng thư viện \texttt{Biopython} để phân tích cú pháp tệp FASTA.
+  \item Làm sạch ID: Tách phân tiêu đề (Header) của FASTA để lấy mã định danh chuẩn (EntryID).
+\end{itemize}
 
-  Kết quả là mỗi protein được biểu diễn bằng một vector chiều thấp (Low-dimensional vector) với kích thước 
-$D \approx 21-25$.
-\end{enumerate}
+\textit{Kỹ thuật tạo đặc trưng (Feature Engineering):}
+Chúng tôi xây dựng vector đặc trưng $X_{manual}$ dựa trên các thuộc tính lý hóa của protein:
+\begin{itemize}
+  \item \texttt{Thành phần Axit Amin (Amino Acid Composition --- AAC)}: tính toán tần suất xuất hiện của 20 loại axit amin chuẩn 
+  (A, R, N, D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y, V) trong mỗi chuỗi. Công thức:
+  \begin{equation}
+  AAC_i = \frac{\text{Count}(AA_i)}{\text{Length}(\text{Sequence})}
+  \end{equation}
+  \item \texttt{Độ dài chuỗi (Sequence Length)}: Thêm đặc trưng về tổng số lượng axit amin. 
+  Độ dài chuỗi thường tương quan với độ phức tạp của chức năng protein.
+\end{itemize}
 
-\subsubsection{Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)}\mbox{}
+Kết quả là mỗi protein được biểu diễn bằng một vector chiều thấp (Low-dimensional vector) với kích thước $D = 21$.
 
-Ở phương pháp này, chúng tôi coi chuỗi protein là một "ngôn ngữ" và sử dụng mô hình học sâu 
+\paragraph{Phương pháp 2: Học biểu diễn ngữ nghĩa (Semantic Representation Learning)}
+
+Phương pháp này coi chuỗi protein là một ``ngôn ngữ'' và sử dụng mô hình học sâu 
 đã được huấn luyện trước (Pre-trained Model) để trích xuất các đặc trưng ngữ nghĩa tiềm ẩn. 
 Phương pháp này nắm bắt được ngữ cảnh, thứ tự và cấu trúc 3D của protein.
 
-\begin{enumerate}[label=\alph*.]
-\item Mô hình nền tảng \\
-  Chúng tôi sử dụng mô hình \texttt{ESM-2} (Evolutionary Scale Modeling) phiên bản 650 triệu tham số 
-  \texttt{(esm2\_t33\_650M\_UR50D)}. Đây là mô hình Transformer tiên tiến nhất hiện nay cho dữ liệu protein.
-\item Quy trình embedding\\
-  \begin{itemize}[label=-]
-    \item \texttt{Bước 1: Mã hóa (tokenization)} - Mỗi axit amin được chuyển đổi thành token số nguyên. 
-   Các token đặc biệt <cls> và <eos> được thêm vào để đánh dấu bắt đầu và kết thúc chuỗi.
-    \item \texttt{Bước 2: Suy luận (inference)} - Chuỗi token được đưa qua 33 lớp Transformer của \texttt{ESM-2}. Tại đây, mô hình 
-   sử dụng cơ chế Self-Attention để học mối quan hệ phức tạp giữa các axit amin, bất kể khoảng cách 
-   của chúng trong chuỗi.
-    \item \texttt{Bước 3: Gộp (pooling)} - Chúng tôi lấy vector trạng thái ẩn (hidden states) tại lớp cuối cùng 
-   và áp dụng kỹ thuật Mean Pooling (lấy trung bình) dọc theo chiều dài chuỗi để thu được một 
-   vector đại diện duy nhất cho toàn bộ protein. 
-  \end{itemize}
+\textit{Mô hình nền tảng:}
+Chúng tôi sử dụng mô hình \texttt{ESM-2} (Evolutionary Scale Modeling) phiên bản 650 triệu tham số 
+\texttt{(esm2\_t33\_650M\_UR50D)}. Đây là mô hình Transformer tiên tiến nhất hiện nay cho dữ liệu protein.
 
-Kết quả là mỗi protein được biểu diễn bằng một vector với kích thước D = 1280 (High-dimensional vector). 
+\textit{Quy trình embedding:}
+\begin{itemize}
+  \item \textbf{Bước 1: Mã hóa (tokenization)} --- Mỗi axit amin được chuyển đổi thành token số nguyên. 
+  Các token đặc biệt \texttt{<cls>} và \texttt{<eos>} được thêm vào để đánh dấu bắt đầu và kết thúc chuỗi.
+  
+  \item \textbf{Bước 2: Suy luận (inference)} --- Chuỗi token được đưa qua 33 lớp Transformer của \texttt{ESM-2}. Tại đây, mô hình 
+  sử dụng cơ chế Self-Attention để học mối quan hệ phức tạp giữa các axit amin, bất kể khoảng cách 
+  của chúng trong chuỗi.
+  
+  \item \textbf{Bước 3: Gộp (pooling)} --- Chúng tôi lấy vector trạng thái ẩn (hidden states) tại lớp cuối cùng 
+  và áp dụng kỹ thuật Mean Pooling (lấy trung bình) dọc theo chiều dài chuỗi để thu được một 
+  vector đại diện duy nhất cho toàn bộ protein. 
+\end{itemize}
+
+Kết quả là mỗi protein được biểu diễn bằng một vector với kích thước $D = 1280$ (High-dimensional vector). 
 Vector này chứa đựng thông tin phong phú về cấu trúc và chức năng của protein.
 
-\end{enumerate}
+\subsubsection{Tiền xử lý dữ liệu nhãn (Label)}
+
+Đối với dữ liệu label, chúng tôi sử dụng phương pháp mã hóa và lọc dữ liệu để giải quyết thách thức của bài toán phân loại đa nhãn cực đoan (Extreme Multi-label Classification).
+Do không gian nhãn GO rất lớn (hơn 40.000 thuật ngữ) và sự phân bố dữ liệu mất cân bằng nghiêm trọng, quy trình xử lý được thực hiện qua hai bước chính:
+
+\paragraph{Bước 1: Lọc nhãn phổ biến (Top-K Filtering)}
+
+Phân tích thống kê cho thấy tần suất xuất hiện của các nhãn GO tuân theo quy luật ``phân phối đuôi dài'' (long-tail distribution). 
+Phần lớn các nhãn chỉ xuất hiện ở một số lượng rất nhỏ các protein (nhãn hiếm --- rare terms), trong khi một số ít nhãn lại xuất hiện rất thường xuyên. 
+Việc cố gắng dự đoán các nhãn hiếm thường gây nhiễu cho mô hình, tốn kém tài nguyên tính toán và dẫn đến hiện tượng học vẹt (overfitting).
+
+Do đó, chúng tôi áp dụng chiến lược chỉ giữ lại \textbf{Top $K$ nhãn phổ biến nhất} cho mỗi nhóm chức năng (BPO, MFO, CCO) và loại bỏ các nhãn phần đuôi. 
+Ví dụ, chúng tôi chọn $K \approx 1500$ cho nhóm BPO và $K \approx 1000$ cho các nhóm còn lại. 
+Chiến lược này giúp giảm chiều dữ liệu đầu ra từ hàng chục nghìn xuống mức quản lý được, đồng thời tập trung mô hình vào các chức năng sinh học cốt lõi có độ tin cậy thống kê cao.
+
+\paragraph{Bước 2: Mã hóa One-hot (One-hot Encoding)}
+
+Sau khi lọc danh sách nhãn mục tiêu, chúng tôi chuyển đổi dữ liệu sang dạng số học bằng kỹ thuật \textit{Multi-label Binarization}. 
+Với mỗi protein $i$ và tập hợp nhãn $L_i$ của nó, ta tạo ra một vector nhãn $y_i \in \{0, 1\}^K$. Giá trị của phần tử thứ $j$ trong vector được xác định như sau:
+
+\begin{equation}
+y_{i,j} = \begin{cases} 
+1 & \text{nếu protein } i \text{ mang chức năng } j \\ 
+0 & \text{ngược lại} 
+\end{cases}
+\end{equation}
+
+Kết quả là chúng tôi thu được các ma trận nhãn thưa (Sparse Matrices). Ma trận này đóng vai trò là nhãn thực tế (Ground Truth) để tính toán hàm mất mát (Loss Function) trong quá trình huấn luyện mô hình.

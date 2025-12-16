@@ -1,74 +1,44 @@
 \subsection{Tiếp cận theo hướng không dùng học máy}
+\subsubsection{Naive Prior Baseline: Frequency-based GO Term Prediction} \mbox{}
+\label{sec:baseline_naive}
+Để thiết lập một mốc tham chiếu (baseline) đơn giản, chúng tôi xây dựng 
+một phương pháp dự đoán dựa hoàn toàn trên thống kê tần suất nhãn trong tập 
+huấn luyện, không sử dụng bất kỳ đặc trưng nào từ chuỗi protein hay embedding. 
+Ý tưởng cốt lõi là khai thác \textit{prior distribution} của các nhãn 
+Gene Ontology (GO): các GO term xuất hiện càng thường xuyên trong dữ liệu huấn 
+luyện được giả định có xác suất cao hơn để xuất hiện ở các protein chưa biết nhãn.
 
-Trong bối cảnh bài toán này, có một phương pháp non-ML mang lại hiệu quả đáng kinh ngạc
-so với các phương pháp sử dụng thuật toán Machine Learning, Deep Learning. Chúng tôi tạm gọi nó là heuristic method.
-Có một số lý do khiến model này hiệu quả. Thứ nhất, chúng tôi nhận thấy khi lấy trung bình tín hiệu trên từng bước thời gian sau khi xử lý tín hiệu,
-ta được Hình~\ref{fig:average_signal} và Hình~\ref{fig:transit}.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\linewidth]{figures/average_signal.png}
-    \caption{Trung bình tín hiệu trên từng bước thời gian}
-    \label{fig:average_signal}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\linewidth]{figures/transit.png}
-    \caption{Insight về hiện tượng transit}
-    \label{fig:transit}
-\end{figure}
-
-Có thể quan sát thấy rằng tín hiệu thu được thường có dạng lõm ở phần giữa, phản ánh hiện tượng hành tinh đi qua phía trước ngôi sao chủ (transit), khiến cường độ ánh sáng giảm xuống do bị che khuất. Độ suy giảm này đạt cực đại khi hành tinh nằm tại vị trí trung tâm của ngôi sao trên đường đi của nó.
-
-Dựa trên hiện tượng vật lý này, thay vì huấn luyện một mô hình học máy, chúng tôi đề xuất một phương pháp tiếp cận thực nghiệm, trong đó tìm kiếm trực tiếp một hệ số khuếch đại tối ưu cho từng phổ tín hiệu.
-
-Cụ thể, với mỗi phổ, chúng tôi thực hiện phát hiện khoảng thời gian xảy ra transit, bằng cách xác định hai điểm mốc là \texttt{phase1} và \texttt{phase2}---tương ứng với thời điểm bắt đầu và kết thúc của quá trình transit. Quá trình này được thực hiện thông qua hàm \texttt{phase\_detector}, dựa trên đạo hàm bậc nhất của tín hiệu.
-Đạo hàm được sử dụng bởi vì ta thấy phase1 là nơi tín hiệu giảm nhanh nhất, phase2 là điểm tín hiệu tăng nhất nhất. Do đó, ta dùng đạo hàm bậc nhất để tìm điểm có đạo hàm cực tiểu và cực đại trong khoảng có tiềm năng.
-
-Sau khi xác định được đoạn tín hiệu chứa hiện tượng transit, chúng tôi tìm một hệ số khuếch đại $s$ sao cho khi nhân đoạn tín hiệu này với $(1 + s)$ thì toàn bộ tín hiệu trở nên “mượt” nhất có thể khi được xấp xỉ bằng một đa thức.
-Độ “mượt” này được định lượng bằng các hàm sai số dùng trong hồi quy giữa tín hiệu đã điều chỉnh và đường cong hồi quy. Cụ thể, trước tiên ta sẽ dùng hồi quy đa thức để fit phần out-of-transit với một đường đa thức nào đó. Sau đó, dùng phương pháp tối ưu hóa Nelder-Mead
-để tìm s sao cho hàm lỗi là nhỏ nhất khi nhân phần in-transit với (1+s). 
-Sau nhiều thử nghiệm, chúng tôi nhận thấy rằng sử dụng đa thức bậc ba với hồi quy ($\text{degree} = 3$) sẽ cho kết quả ổn định và chính xác nhất.
-
-Để rõ ràng hơn, ta giả sử đoạn tín hiệu trong khoảng \texttt{[phase1:phase2]} tương ứng với pha transit có giá trị trung bình là \( it \) (in-transit), và phần còn lại có giá trị trung bình là \( oot \) (out-of-transit). Khi áp dụng hệ số khuếch đại \( s \) vào vùng transit, ta có:
-
+\paragraph{Ước lượng phân phối nhãn theo từng phân hệ (aspect).}
+Gọi $a \in \{P, C, F\}$ lần lượt tương ứng với \textit{Biological Process}, \textit{Cellular Component} và \textit{Molecular Function}. Từ tập huấn luyện, ta đếm số lần xuất hiện của mỗi GO term $t$ trong aspect $a$:
 \begin{equation}
-    \text{Adjusted in-transit signal} = it \cdot (1 + s)
+c_a(t) = \#\{(\cdot, t)\mid \text{aspect}=a\}, 
 \end{equation}
-    
-
-Giả định rằng việc điều chỉnh này làm cho mức tín hiệu trong vùng transit tiệm cận với mức tín hiệu ngoài transit, tức là:
-
+và tổng số annotation trong aspect:
 \begin{equation}
-    it \cdot (1 + s) = oot
+N_a = \sum_{t} c_a(t).
 \end{equation}
-    
-
-Từ đó, ta suy ra:
-
+Xác suất tiên nghiệm của term $t$ trong aspect $a$ được ước lượng bằng tần suất chuẩn hoá:
 \begin{equation}
-    s = \frac{oot - it}{it}
-\end{equation}
-    
-
-Mặt khác, transit depth (mục tiêu cần dự đoán) được định nghĩa là:
-
-\begin{equation}
-    \text{transit depth} = \frac{oot - it}{oot}
+p_a(t)=\frac{c_a(t)}{N_a}.
 \end{equation}
 
-Ta thay \( s \) vào biểu thức trên:
-
+\paragraph{Chọn top-$k$ GO term phổ biến nhất.}
+Với mỗi aspect $a$, ta chọn tập $\mathcal{T}^{(k)}_a$ gồm $k$ term có $c_a(t)$ lớn nhất:
 \begin{equation}
-    \text{transit depth} = \frac{s \cdot it}{oot} = \frac{s \cdot it}{it (1 + s)} = \frac{s}{1 + s} = 1 - \frac{1}{1 + s}
+\mathcal{T}^{(k)}_a = \text{TopK}_{t}\big(c_a(t)\big).
 \end{equation}
 
-Vậy:
-
+\paragraph{Inference}
+Với mỗi protein trong tập test $x$, baseline này không phân biệt giữa các protein mà xuất ra cùng một tập dự đoán cho mọi $x$. Cụ thể, với mỗi aspect $a$, ta dự đoán tất cả các term trong $\mathcal{T}^{(k)}_a$ với điểm tin cậy bằng xác suất tiên nghiệm $p_a(t)$:
 \begin{equation}
-    \boxed{\text{transit depth} = 1 - \frac{1}{1 + s}}
+\hat{s}(x,t)=
+\begin{cases}
+p_a(t), & \text{nếu }\, t \in \mathcal{T}^{(k)}_a,\\
+\text{không xuất ra}, & \text{ngược lại}.
+\end{cases}
 \end{equation}
 
-Công thức này cho thấy mối quan hệ chặt chẽ giữa hệ số khuếch đại \( s \) và transit depth (mục tiêu cần dự đoán), giúp diễn giải rõ ràng giá trị đầu ra của mô hình non-ML theo cách có ý nghĩa vật lý.
-% Tuy nhiên, thực nghiệm cho thấy, khi ta lấy transit depth xấp xỉ bằng s thì lại cho kết quả cao hơn việc lấy theo chính xác công thức trên.
-% Do đó, chúng tôi quyết định sử dụng giá trị transit depth xấp xỉ bằng s để làm đầu ra của mô hình.
+\paragraph{Vai trò và hạn chế.}
+Ưu điểm của baseline này là đơn giản, dễ tái lập và gần như không tốn chi phí tính toán. Tuy nhiên, do dự đoán không phụ thuộc vào đặc trưng protein, phương pháp không thể cá nhân hoá dự đoán theo chuỗi và chỉ phù hợp như một mốc tham chiếu để so sánh với các phương pháp học có điều kiện theo protein.
+
+\subsubsection{BLAST - }

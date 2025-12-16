@@ -6,13 +6,19 @@
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
-\usepackage[T5]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage{lmodern}
 \usepackage[vietnamese]{babel}
 \usepackage{xcolor}
 \usepackage{siunitx}
+\usepackage{enumitem}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Đổi format đánh số: subsection dùng chữ cái (A, B, C...), subsubsection dùng số (1, 2, 3...)
+\renewcommand{\thesubsection}{\Alph{subsection}.}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 \begin{document}
 
 \title{CAFA 6 Protein Function Prediction Report}

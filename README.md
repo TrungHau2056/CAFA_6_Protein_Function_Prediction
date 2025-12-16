@@ -1,11 +1,8 @@
-# Ariel-Data-Challenge-2025
+# CAFA 6 Protein Function Prediction
 
-This is project for ML course (Summer 2025)
+This is project for ML course
 
-Process note: [Google slide](https://docs.google.com/presentation/d/18Vp6ZC_fT6mfOTQQa21GXSIYKOi8TKRNIq-FAUhTFIM/edit?usp=sharing)
-
-[Competition link](https://www.kaggle.com/competitions/ariel-data-challenge-2025)
-
+[Competition link]([https://www.kaggle.com/competitions/cafa-6-protein-function-prediction])
 
 Simple tracklist
 - [ ] Problem formulation

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1765856175.66623 "d:/Ky5/ML/CAFA_6_Protein_Function_Prediction/report.tex" "report.pdf" "report" 1765856177.66944 0
+["pdflatex"] 1765860754.65213 "d:/Ky5/ML/CAFA_6_Protein_Function_Prediction/report.tex" "report.pdf" "report" 1765860756.85323 0
   "C:/Users/hautt/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1765764033 89969 e95579120a3aa0ebc21d2737ca2ba701 ""
   "C:/Users/hautt/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1763135700 13333512 6ab9457cd721d20739a8c3e2f5f33fe7 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc" 1256929440 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -61,6 +61,7 @@
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb" 1256929440 116427 4909e80035dae5d5a4ec2b5ddd9649dd ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb" 1256929440 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb" 1256929440 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
+  "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb" 1256929440 31443 ba2241b179aa231f73e052863720cb42 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb" 1256929440 30789 39c6b966e509dbc60e7a1aaaf85d08a0 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb" 1256929440 119235 05e5c8d6d60439433e50047898c2c0e0 ""
   "C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb" 1256929440 113634 9384aebdf26f9881e046a4b5574566db ""
@@ -138,7 +139,7 @@
   "figures/poly_degree.png" 1765762478 1046551 56b3d24443fad972a15f5197e3e8328b ""
   "figures/raw_dips.png" 1765762478 303502 f189b5deef9a6eaefa523d6c2a5cf2b3 ""
   "figures/regressor.png" 1765762478 556819 9c3438d2aecb7895e7ce92511765da58 ""
-  "report.aux" 1765856177 5597 dafe11071b189bc1c3e4fff88fba02b7 "pdflatex"
+  "report.aux" 1765860756 5962 4ac922f6f4f238bb91abc949459627fb "pdflatex"
   "report.tex" 1765825056 2495 39608fc890a839cb42d1be7c5a1b66fc ""
   "section/appendix.tex" 1765762478 97 406241ad255f84a4c23538d999213050 ""
   "section/appendix/contributor.tex" 1765762478 445 a20bfdf85a36458a84a3162221c984c2 ""
@@ -155,7 +156,7 @@
   "section/method.tex" 1765764118 139 13900fd12a7fa8dd955fc529462e129a ""
   "section/method/data-preprocessing.tex" 1765856172 6833 38804d19d1c52bd533fb3319a33aa640 ""
   "section/method/ml.tex" 1765762478 401 aea4dbc9d9f9ac1a66ba3a8dc60e0efb ""
-  "section/method/non-ml.tex" 1765854793 2720 f60a636ad55ae242feacf8217abf524a ""
+  "section/method/non-ml.tex" 1765860753 10280 d3557e7d157db5eccf797c2b2829db9d ""
   (generated)
   "report.aux"
   "report.log"

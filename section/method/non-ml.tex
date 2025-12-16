@@ -41,4 +41,91 @@ p_a(t), & \text{nếu }\, t \in \mathcal{T}^{(k)}_a,\\
 \paragraph{Vai trò và hạn chế.}
 Ưu điểm của baseline này là đơn giản, dễ tái lập và gần như không tốn chi phí tính toán. Tuy nhiên, do dự đoán không phụ thuộc vào đặc trưng protein, phương pháp không thể cá nhân hoá dự đoán theo chuỗi và chỉ phù hợp như một mốc tham chiếu để so sánh với các phương pháp học có điều kiện theo protein.
 
-\subsubsection{BLAST - }
+\subsubsection{Phương pháp tiếp cận dựa trên sự tương đồng (Homology-based Approach)}\mbox{}
+
+Chúng tôi sử dụng phương pháp tin sinh học kinh điển: Gióng hàng trình tự (Sequence Alignment). Nguyên lý cốt lõi của phương pháp này dựa trên giả thuyết sinh học \textit{``Guilt by Association''} (Tương đồng cấu trúc dẫn đến tương đồng chức năng). 
+
+Cụ thể, nếu protein $A$ (trong tập Test) có trình tự axit amin tương đồng cao với protein $B$ (đã biết chức năng trong tập Train), khả năng cao $A$ sẽ thừa hưởng các chú giải chức năng của $B$. Do đó, bài toán dự đoán chức năng được chuyển về bài toán tìm kiếm láng giềng gần nhất trong không gian trình tự sinh học.
+
+\paragraph{Thuật toán BLAST (Basic Local Alignment Search Tool)}
+BLAST là tiêu chuẩn vàng trong tìm kiếm tương đồng trình tự cục bộ. Thay vì sử dụng quy hoạch động toàn cục (như Needleman-Wunsch) tốn kém chi phí tính toán $O(m \times n)$, BLAST sử dụng phương pháp heuristic dựa trên thống kê để tìm các vùng tương đồng cục bộ (Local Alignment) có ý nghĩa nhất.
+
+Quy trình hoạt động và cơ sở toán học của BLAST bao gồm 3 thành phần chính:
+
+\texttt{1. Ma trận chấm điểm (Scoring System):}
+Để định lượng mức độ giống nhau giữa hai axit amin $i$ và $j$, BLAST sử dụng ma trận điểm thay thế (thường là BLOSUM62). Điểm số $S_{ij}$ được tính dựa trên tỷ lệ \textit{log-odds}:
+
+\begin{equation}
+S_{ij} = \frac{1}{\lambda} \log \left( \frac{p_{ij}}{q_i q_j} \right)
+\end{equation}
+
+Trong đó:
+\begin{itemize}
+    \item $p_{ij}$: Xác suất quan sát thấy axit amin $i$ và $j$ thay thế cho nhau trong các chuỗi tương đồng thực sự (do bảo tồn tiến hóa).
+    \item $q_i, q_j$: Tần suất xuất hiện ngẫu nhiên (nền) của axit amin $i$ và $j$.
+    \item $\lambda$: Hệ số tỷ lệ.
+\end{itemize}
+Nếu $S_{ij} > 0$, sự thay thế được coi là tương đồng; ngược lại là không tương đồng.
+
+\texttt{2. Cơ chế Seed-and-Extend:}
+Thuật toán hoạt động qua hai bước:
+\begin{itemize}
+    \item \textbf{Gieo hạt (Seeding):} Chia chuỗi truy vấn thành các đoạn ngắn (k-mers, thường $k=3$ cho protein). Tìm các vị trí trong cơ sở dữ liệu khớp với các k-mers này (hoặc có điểm số thay thế vượt ngưỡng $T$).
+    \item \textbf{Mở rộng (Extension):} Từ các hạt giống, thuật toán mở rộng sang hai phía để hình thành Cặp đoạn điểm cao (HSP --- High-scoring Segment Pair). Điểm số tích lũy $S$ của đoạn liên kết được tính bằng tổng điểm các cặp axit amin trừ đi điểm phạt khoảng trống (gap penalty):
+    \begin{equation}
+    S = \sum_{k} S(x_k, y_k) - (G_{open} + L_{gap} \cdot G_{ext})
+    \end{equation}
+    Quá trình mở rộng dừng lại khi điểm số suy giảm quá mức $X$ so với giá trị đỉnh (drop-off heuristic).
+\end{itemize}
+
+\texttt{3. Đánh giá thống kê (E-value):}
+Để loại bỏ các kết quả ngẫu nhiên, BLAST sử dụng chỉ số E-value (Expectation value). E-value biểu thị số lượng các so khớp có điểm số $\ge S$ mà ta kỳ vọng tìm thấy \textit{ngẫu nhiên} trong một cơ sở dữ liệu kích thước $N$:
+
+\begin{equation}
+E = K \cdot m \cdot n \cdot e^{-\lambda S}
+\end{equation}
+
+Trong đó $m, n$ là độ dài chuỗi truy vấn và cơ sở dữ liệu; $K, \lambda$ là hằng số thống kê Gumbel. Một kết quả được coi là có ý nghĩa sinh học nếu $E$ rất nhỏ (ví dụ $E < 10^{-5}$).
+\\
+\\
+Hạn chế đối với CAFA 6 đó là mặc dù có độ chính xác cao, độ phức tạp tính toán của BLAST trở thành rào cản lớn đối với dữ liệu Big Data. Với tập dữ liệu hàng trăm nghìn chuỗi của CAFA 6, việc thực hiện so khớp tất cả với tất cả (All-vs-All) bằng BLAST có thể mất hàng tuần xử lý trên CPU thông thường, không khả thi trong giới hạn thời gian của cuộc thi.
+
+\paragraph{Sử dụng DIAMOND làm giải pháp thay thế}
+
+Để khắc phục hạn chế về hiệu năng tính toán của BLAST trên dữ liệu lớn, chúng tôi sử dụng \textbf{DIAMOND} (Double Index Alignment of Next-generation Sequencing Data). Đây là thuật toán được tối ưu hóa đặc biệt cho dữ liệu giải trình tự thế hệ mới, cho phép tốc độ xử lý nhanh hơn từ \textbf{500 đến 20.000 lần} so với BLAST trong khi vẫn duy trì độ nhạy tương đương ở các thiết lập tiêu chuẩn.
+
+Cơ sở toán học và thuật toán của DIAMOND dựa trên hai cải tiến cốt lõi so với mô hình \textit{Seed-and-Extend} truyền thống:
+
+\texttt{1. Bảng chữ cái rút gọn (Reduced Alphabet):}
+Trong khi BLAST so sánh chính xác trên không gian 20 axit amin chuẩn $\Sigma_{std}$, DIAMOND thực hiện tìm kiếm hạt giống trên một không gian rút gọn $\Sigma_{red}$ (thường gồm 11 nhóm).
+Ánh xạ $\Phi$ được định nghĩa dựa trên tính chất hóa lý của axit amin:
+
+\begin{equation}
+\Phi: \Sigma_{std} \to \Sigma_{red}
+\end{equation}
+
+Ví dụ: Các axit amin kỵ nước (Hydrophobic) hoặc tích điện dương (Positively Charged) được gom nhóm:
+\[ \Phi(\{L, V, I, M\}) \to \text{Hydrophobic}, \quad \Phi(\{K, R\}) \to \text{Positive} \]
+
+Điều kiện khớp hạt giống (seed match) giữa đoạn chuỗi $S_1$ và $S_2$ tại vị trí $k$ trở thành:
+\begin{equation}
+\text{Match}(S_1[k], S_2[k]) \iff \Phi(S_1[k]) = \Phi(S_2[k])
+\end{equation}
+
+Việc này làm tăng xác suất tìm thấy các hạt giống (seeds) ngay cả khi có đột biến thay thế axit amin, cho phép sử dụng các hạt giống dài hơn và có khoảng cách (spaced seeds) để tăng tốc độ lọc mà không làm giảm độ nhạy.
+
+\texttt{2. Đánh chỉ mục kép (Double Indexing):}
+Khác với BLAST chỉ đánh chỉ mục cơ sở dữ liệu (Database), DIAMOND đánh chỉ mục cho cả Chuỗi truy vấn (Query) và Cơ sở dữ liệu cùng lúc.
+Thuật toán sắp xếp các hạt giống từ cả hai nguồn theo thứ tự từ điển. Quá trình tìm kiếm trở thành việc duyệt tuyến tính qua hai danh sách đã sắp xếp, giúp tối ưu hóa việc truy cập bộ nhớ cache (cache locality) và giảm thiểu chi phí truy cập ngẫu nhiên.
+
+\texttt{3. Chuyển giao điểm số (Score Propagation):}
+Sau khi tìm được các protein tương đồng từ tập huấn luyện, điểm số dự đoán cho protein mục tiêu được tính:
+
+\begin{equation}
+\resizebox{0.9\columnwidth}{!}{$\displaystyle
+Score(P_{test}, F) = \max_{P_{train} \in \text{Hits}} \left( \frac{\text{pident}(P_{test}, P_{train})}{100} \times y_{train, F} \right)
+$}
+\end{equation}
+
+Trong đó $\text{pident}$ là tỷ lệ phần trăm axit amin giống hệt, $y_{train, F} \in \{0, 1\}$ là nhãn của protein huấn luyện.
+Công thức này đảm bảo rằng các protein càng giống nhau về cấu trúc thì độ tin cậy của việc chuyển giao chức năng càng cao.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.14)  16 DEC 2025 10:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.14)  16 DEC 2025 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -703,8 +703,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--31
 []\T5/lmtt/m/n/10 Th nh ph¦n Axit Amin (Amino Acid Composition
  []
 
-) (section/method/non-ml.tex [2{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]) (section/method/ml.tex)) (section/experiments.tex (section/experiments/baseline.tex
-<figures/poly_degree.png, id=23, 857.2025pt x 595.22375pt>
+) (section/method/non-ml.tex [2{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+Underfull \hbox (badness 1406) in paragraph at lines 44--45
+ \T5/lmr/m/it/10 2) Ph÷ìng ph¡p ti¸p cªn düa tr¶n sü t÷ìng ^^_çng
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
+[]\T5/lmtt/m/n/10 1. B£ng chú c¡i rót gån (Reduced Alphabet):
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
+[]\T5/lmtt/m/n/10 3. Chuyºn giao ^^_iºm sè (Score Propagation):
+ []
+
+) (section/method/ml.tex)) (section/experiments.tex (section/experiments/baseline.tex
+<figures/poly_degree.png, id=27, 857.2025pt x 595.22375pt>
 File: figures/poly_degree.png Graphic file (type png)
 <use figures/poly_degree.png>
 Package pdftex.def Info: figures/poly_degree.png  used on input line 12.
@@ -713,30 +733,23 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 22.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 22.
-<figures/explain_SCALE.png, id=25, 1227.58624pt x 348.30125pt>
+<figures/explain_SCALE.png, id=29, 1227.58624pt x 348.30125pt>
 File: figures/explain_SCALE.png Graphic file (type png)
 <use figures/explain_SCALE.png>
 Package pdftex.def Info: figures/explain_SCALE.png  used on input line 38.
 (pdftex.def)             Requested size: 201.60077pt x 57.19617pt.
-) (section/experiments/result.tex
-<figures/regressor.png, id=26, 1130.2225pt x 501.875pt>
+ [4 <./figures/poly_degree.png> <./figures/explain_SCALE.png>]) (section/experiments/result.tex
+<figures/regressor.png, id=38, 1130.2225pt x 501.875pt>
 File: figures/regressor.png Graphic file (type png)
 <use figures/regressor.png>
 Package pdftex.def Info: figures/regressor.png  used on input line 6.
 (pdftex.def)             Requested size: 226.79846pt x 100.7025pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figures/raw_dips.png, id=27, 773.89125pt x 487.06969pt>
+<figures/raw_dips.png, id=39, 773.89125pt x 487.06969pt>
 File: figures/raw_dips.png Graphic file (type png)
 <use figures/raw_dips.png>
 Package pdftex.def Info: figures/raw_dips.png  used on input line 13.
 (pdftex.def)             Requested size: 232.19843pt x 146.13689pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<figures/gp_ae_dip.png, id=28, 856.70062pt x 540.51938pt>
+<figures/gp_ae_dip.png, id=40, 856.70062pt x 540.51938pt>
 File: figures/gp_ae_dip.png Graphic file (type png)
 <use figures/gp_ae_dip.png>
 Package pdftex.def Info: figures/gp_ae_dip.png  used on input line 20.
@@ -749,17 +762,15 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 20--21
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./figures/poly_degree.png> <./figures/explain_SCALE.png>]
-<figures/non_ml_dip.png, id=36, 740.7675pt x 515.67656pt>
+<figures/non_ml_dip.png, id=41, 740.7675pt x 515.67656pt>
 File: figures/non_ml_dip.png Graphic file (type png)
 <use figures/non_ml_dip.png>
 Package pdftex.def Info: figures/non_ml_dip.png  used on input line 36.
 (pdftex.def)             Requested size: 206.39685pt x 143.68027pt.
 
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/pca.png, id=37, 580.41844pt x 363.60844pt>
+<figures/pca.png, id=42, 580.41844pt x 363.60844pt>
 File: figures/pca.png Graphic file (type png)
 <use figures/pca.png>
 Package pdftex.def Info: figures/pca.png  used on input line 57.
@@ -772,7 +783,7 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 57--58
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/ml_catch.png, id=38, 616.55344pt x 433.62pt>
+<figures/ml_catch.png, id=43, 616.55344pt x 433.62pt>
 File: figures/ml_catch.png Graphic file (type png)
 <use figures/ml_catch.png>
 Package pdftex.def Info: figures/ml_catch.png  used on input line 68.
@@ -785,21 +796,16 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 68--69
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/non_ml_catch.png, id=39, 403.5075pt x 258.9675pt>
+[5 <./figures/regressor.png> <./figures/raw_dips.png> <./figures/gp_ae_dip.png> <./figures/non_ml_dip.png>]
+<figures/non_ml_catch.png, id=51, 403.5075pt x 258.9675pt>
 File: figures/non_ml_catch.png Graphic file (type png)
 <use figures/non_ml_catch.png>
 Package pdftex.def Info: figures/non_ml_catch.png  used on input line 80.
 (pdftex.def)             Requested size: 206.39685pt x 132.46286pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)) [4 <./figures/regressor.png> <./figures/raw_dips.png> <./figures/gp_ae_dip.png> <./figures/non_ml_dip.png>] (section/conclusion.tex) (section/cite.tex) (section/appendix.tex (section/appendix/preprocessing.tex) (section/appendix/contributor.tex
+)) (section/conclusion.tex) (section/cite.tex) (section/appendix.tex (section/appendix/preprocessing.tex) (section/appendix/contributor.tex
 Overfull \hbox (29.77516pt too wide) in paragraph at lines 6--13
  [][] 
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 )) (section/cite.tex)
 
@@ -813,24 +819,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./figures/pca.png> <./figures/ml_catch.png> <./figures/non_ml_catch.png>] (report.aux)
+[6 <./figures/pca.png> <./figures/ml_catch.png> <./figures/non_ml_catch.png>] (report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-10-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11006 strings out of 467871
- 230254 string characters out of 5418375
+ 11008 strings out of 467871
+ 230316 string characters out of 5418375
  626406 words of memory out of 5000000
- 39672 multiletter control sequences out of 15000+600000
+ 39674 multiletter control sequences out of 15000+600000
  909798 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 73i,9n,80p,528b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on report.pdf (5 pages, 2715643 bytes).
+ 73i,9n,80p,650b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/hautt/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on report.pdf (6 pages, 2745074 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
+ 136 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
